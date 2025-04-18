@@ -1,54 +1,86 @@
-# React + TypeScript + Vite
+# 🧠 Multi-Select Dropdown Component (Assignment for Lobox)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a reusable **multi-select dropdown** component built using **React**, **TypeScript**, and **SCSS**. It was created as part of a technical assignment for a front-end developer role.
 
-Currently, two official plugins are available:
+## 📌 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Select multiple items from a dropdown list
+- Add new items by typing
+- Dropdown closes when clicking outside the component
+- Reusable component with clean props interface
+- Written in **TypeScript** for type safety
+- Styled using **SCSS**, closely matching the provided UI design
 
-## Expanding the ESLint configuration
+## 🚀 Technologies Used
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 18**
+- **TypeScript**
+- **Vite** (for fast development)
+- **SCSS** (modular, custom styles)
+- **React Hooks** (`useState`, `useEffect`, `useRef`)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 📁 Project Structure
+
+```
+src/
+├── components/
+│   └── MultiSelect.tsx       # Reusable dropdown component
+│   └── MultiSelect.scss      # Component-specific styling
+├── styles/
+│   └── main.scss             # Global styles
+├── App.tsx                   # Example usage
+├── main.tsx                  # Entry point
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🛠️ Getting Started
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 1. Clone the repository
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+git clone https://github.com/Epic2077/dropdown.git
+cd dropdown
 ```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Run the project locally
+
+```bash
+npm run dev
+```
+
+Visit `http://localhost:5173` in your browser.
+
+---
+
+## 🧩 Component Props
+
+```ts
+type MultiSelectProps = {
+  options: string[]; // Initial list of selectable items
+  onChange?: (selected: string[]) => void; // Callback when selected values change
+  placeholder?: string; // Placeholder for the input field
+};
+```
+
+---
+
+## 🎯 Future Improvements
+
+- Keyboard navigation (arrow keys + Enter)
+- Accessibility enhancements (ARIA roles)
+- Option grouping or tagging support
+
+---
+
+## 📄 License
+
+This project is for demonstration and technical evaluation purposes.
+
+---
+
+Made with 💙 by [Ashkan Sadeghi](https://github.com/Epic2077)
