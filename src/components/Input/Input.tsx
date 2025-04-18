@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Input.module.scss";
 import { cn } from "../../lib/utils";
 import { ChevronDown, ChevronUp } from "lucide-react";
+import { useDropdown } from "../../utils/DropdownContext";
 
 const DropdownInput: React.FC = () => {
   // function to handle the dropdown input state
-  const [isOpen, setIsOpen] = useState(false);
+  const { isOpen, setIsOpen } = useDropdown();
 
   // This function handles the click event outside the dropdown input field.
   React.useEffect(() => {
@@ -21,7 +22,7 @@ const DropdownInput: React.FC = () => {
     return () => {
       document.removeEventListener("mousedown", handleOutsideClick);
     };
-  }, []);
+  }, [setIsOpen]);
 
   const handleClick = () => {
     setIsOpen((prev) => !prev);
