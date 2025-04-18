@@ -1,0 +1,39 @@
+.items {
+  display: flex;
+  width: 90%;
+  height: 5rem;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  margin-top: 1rem;
+}
+
+.items:hover {
+  background-color: #f2f4ff;
+  cursor: pointer;
+}
+
+.itemsActive {
+  background-color: #f2f4ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+}
+
+.activeItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  color: #8395d1;
+}
+
+.check {
+  color: #8395d1;
+}
