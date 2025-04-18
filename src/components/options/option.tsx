@@ -5,9 +5,10 @@ import Items from "../optionItems/OptionItems";
 
 interface OptionProps {
   isOpen: boolean;
+  searchTerm: string;
 }
 
-const Option: React.FC<OptionProps> = ({ isOpen }) => {
+const Option: React.FC<OptionProps> = ({ isOpen, searchTerm }) => {
   //Could use the context instead of prop
   //const { isOpen } = useDropdown();
 
@@ -30,6 +31,10 @@ const Option: React.FC<OptionProps> = ({ isOpen }) => {
     setAdd(false);
     setItems(newArr);
   };
+
+  const visible = items.filter((item) =>
+    item.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   return (
     <>
@@ -63,7 +68,7 @@ const Option: React.FC<OptionProps> = ({ isOpen }) => {
           <div className={styles.line}></div>
 
           {/* render each saved option */}
-          {items.map((item) => (
+          {visible.map((item) => (
             <Items
               key={item}
               item={item}

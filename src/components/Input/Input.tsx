@@ -10,6 +10,7 @@ import Option from "../options/Option";
 const DropdownInput: React.FC = () => {
   // function to handle the dropdown input state
   const [isOpen, setIsOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   // If I wanted to use the context provider, I would use this line instead of the above line
   // const { isOpen, setIsOpen } = useDropdown();
@@ -39,11 +40,13 @@ const DropdownInput: React.FC = () => {
           name="input-text"
           id="input-text"
           className={styles.input_text}
+          value={searchTerm}
           placeholder="Select an option"
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
         {isOpen === false ? <ChevronDown /> : <ChevronUp />}
       </div>
-      <Option isOpen={isOpen} />
+      <Option isOpen={isOpen} searchTerm={searchTerm} />
     </div>
   );
 };
