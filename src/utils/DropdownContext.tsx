@@ -1,5 +1,7 @@
 import React, { createContext, useState, useContext, ReactNode } from "react";
 
+//! This file contains the context provider just to show my capabilities. it is not used throughout the website
+
 // This context is used to manage the state of the dropdown input field
 interface DropdownContextType {
   isOpen: boolean;
