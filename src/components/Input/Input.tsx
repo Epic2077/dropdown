@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import inputStyles from "./Input.module.scss";
 import optionStyles from "../options/option.module.scss";
 // Importing styles for the dropdown input and options
@@ -14,34 +14,25 @@ const DropdownInput: React.FC = () => {
   // If I wanted to use the context provider, I would use this line instead of the above line
   // const { isOpen, setIsOpen } = useDropdown();
 
-  React.useEffect(() => {
-    const handleOutsideClick = (event: MouseEvent) => {
-      // Check if the click is outside the dropdown input field
-      if (
-        !(event.target as HTMLElement).closest(`.${styles.input_text}`) &&
-        !(event.target as HTMLElement).closest(`.${styles.option}`)
-      ) {
-        setIsOpen(false);
-      }
-    };
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
-    // Add event listener to the document to handle clicks outside the dropdown input field
-    document.addEventListener("mousedown", handleOutsideClick);
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      // 2) if click is *anywhere* inside the wrapper, bail out
+      if (wrapperRef.current?.contains(e.target as Node)) return;
+      // otherwise close
+      setIsOpen(false);
     };
-  }, [setIsOpen]);
-
-  const handleClick = () => {
-    setIsOpen(true);
-  };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   // This component is the dropdown input field.
   return (
-    <div className="col">
+    <div className="col" ref={wrapperRef}>
       <div
         className={cn(styles.input, { [styles.active]: isOpen })}
-        onClick={handleClick}
+        onClick={() => setIsOpen(true)}
       >
         <input
           type="text"

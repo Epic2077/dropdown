@@ -1,7 +1,13 @@
 .option {
+  position: relative;
   background-color: #ffffff;
   border: 3px solid #c3c6cb;
+  overflow-y: auto;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   padding: 1rem;
   min-height: 4.5rem;
   max-height: 25rem;
@@ -10,4 +16,43 @@
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
+}
+
+.addOption {
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  width: 90%;
+  height: 4rem;
+  border: 2px solid #8d9ecc;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.activeOption {
+  border: none;
+  font-size: 1.6rem;
+  outline: none;
+  width: 70%;
+  color: #8f949a;
+}
+.plus {
+  color: #8d9ecc;
+  margin: 0 auto;
+}
+
+.input_row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
