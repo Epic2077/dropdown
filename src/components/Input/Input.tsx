@@ -11,7 +11,7 @@ const DropdownInput: React.FC = () => {
   React.useEffect(() => {
     const handleOutsideClick = (event: MouseEvent) => {
       // Check if the click is outside the dropdown input field
-      if (!(event.target as HTMLElement).closest(`.${styles.input}`)) {
+      if (!(event.target as HTMLElement).closest(`.${styles.input_text}`)) {
         setIsOpen(false);
       }
     };
@@ -27,7 +27,7 @@ const DropdownInput: React.FC = () => {
     setIsOpen((prev) => !prev);
   };
 
-  // This component is a placeholder for a dropdown input field.
+  // This component is the dropdown input field.
   return (
     <div
       className={cn(styles.input, { [styles.active]: isOpen })}
@@ -38,6 +38,7 @@ const DropdownInput: React.FC = () => {
         name="input-text"
         id="input-text"
         className={styles.input_text}
+        placeholder="Select an option"
       />
       {isOpen === false ? <ChevronDown /> : <ChevronUp />}
     </div>
