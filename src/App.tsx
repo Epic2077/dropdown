@@ -1,8 +1,13 @@
+import DropdownInput from "./components/Input/Input";
+import { DropdownProvider } from "./utils/DropdownContext";
+
 function App() {
   return (
-    <>
-      <div className="center"></div>
-    </>
+    <DropdownProvider>
+      <div className="center">
+        <DropdownInput />
+      </div>
+    </DropdownProvider>
   );
 }
 
