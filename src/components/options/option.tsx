@@ -53,6 +53,11 @@ const Option: React.FC<OptionProps> = ({ isOpen, searchTerm }) => {
                   onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                     setInputValue(e.target.value)
                   }
+                  onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                    if (e.key === "Enter") {
+                      handleSave();
+                    }
+                  }}
                 />
                 <div className={styles.icons}>
                   <Check
