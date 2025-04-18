@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./option.module.scss";
 import { Check, Plus, X } from "lucide-react";
+import Items from "../optionItems/OptionItems";
 
 interface OptionProps {
   isOpen: boolean;
@@ -12,15 +13,22 @@ const Option: React.FC<OptionProps> = ({ isOpen }) => {
 
   const [add, setAdd] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  // holds the currently activated item
+  const [activeItems, setActiveItems] = useState<string[]>([]);
+  const [items, setItems] = useState<string[]>([]);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("options");
+    if (stored) setItems(JSON.parse(stored));
+  }, []);
 
   // on check click, read existing array, push new entry, save back
   const handleSave = () => {
-    const stored = localStorage.getItem("options");
-    const arr = stored ? (JSON.parse(stored) as string[]) : [];
-    arr.push(inputValue);
-    localStorage.setItem("options", JSON.stringify(arr));
+    const newArr = [...items, inputValue];
+    localStorage.setItem("options", JSON.stringify(newArr));
     setInputValue("");
     setAdd(false);
+    setItems(newArr);
   };
 
   return (
@@ -45,7 +53,6 @@ const Option: React.FC<OptionProps> = ({ isOpen }) => {
                   <Check
                     onClick={() => {
                       handleSave();
-                      setAdd(false);
                     }}
                   />
                   <X onClick={() => setAdd(false)} />
@@ -53,6 +60,23 @@ const Option: React.FC<OptionProps> = ({ isOpen }) => {
               </div>
             )}
           </div>
+          <div className={styles.line}></div>
+
+          {/* render each saved option */}
+          {items.map((item) => (
+            <Items
+              key={item}
+              item={item}
+              active={activeItems.includes(item)}
+              onClick={() => {
+                setActiveItems((prev) =>
+                  prev.includes(item)
+                    ? prev.filter((i) => i !== item)
+                    : [...prev, item]
+                );
+              }}
+            />
+          ))}
         </div>
       )}
     </>

@@ -5,7 +5,7 @@ import optionStyles from "../options/option.module.scss";
 const styles = { ...inputStyles, ...optionStyles };
 import { cn } from "../../lib/utils";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import Option from "../options/option";
+import Option from "../options/Option";
 
 const DropdownInput: React.FC = () => {
   // function to handle the dropdown input state
