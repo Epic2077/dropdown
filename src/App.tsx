@@ -1,13 +1,15 @@
 import DropdownInput from "./components/Input/Input";
-import { DropdownProvider } from "./utils/DropdownContext";
 
 function App() {
   return (
-    <DropdownProvider>
+    <>
+      {/* Just to show that I could use useContext */}
+      {/* <DropdownProvider> */}
       <div className="center">
         <DropdownInput />
       </div>
-    </DropdownProvider>
+      {/* </DropdownProvider> */}
+    </>
   );
 }
 
