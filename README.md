@@ -80,7 +80,3 @@ type MultiSelectProps = {
 ## 📄 License
 
 This project is for demonstration and technical evaluation purposes.
-
----
-
-Made with 💙 by [Ashkan Sadeghi](https://github.com/Epic2077)
