@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./option.module.scss";
 import { Check, Plus, X } from "lucide-react";
 
